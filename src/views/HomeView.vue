@@ -125,7 +125,7 @@ const clearForm = () => {
                 @blur="validateName(true)"
                 @input="validateName(false)"
               />
-              <div v-if="errors.username" class="text-danger">{{ errors.username }}</div>
+              <div v-if="errors.username" class="text-danger small">{{ errors.username }}</div>
             </div>
 
             <div class="col-md-6 col-sm-6">
@@ -150,7 +150,7 @@ const clearForm = () => {
                 @blur="validatePassword(true)"
                 @input="validatePassword(false)"
               />
-              <div v-if="errors.password" class="text-danger">{{ errors.password }}</div>
+              <div v-if="errors.password" class="text-danger small">{{ errors.password }}</div>
             </div>
 
             <div class="col-md-6 col-sm-6">
@@ -162,7 +162,7 @@ const clearForm = () => {
                 v-model="formData.confirmPassword"
                 @blur="validateConfirmPassword(true)"
               />
-              <div v-if="errors.confirmPassword" class="text-danger">{{ errors.confirmPassword }}</div>
+              <div v-if="errors.confirmPassword" class="text-danger small">{{ errors.confirmPassword }}</div>
             </div>
           </div>
 
@@ -213,59 +213,12 @@ const clearForm = () => {
   <div class="row mt-5">
     <h4>This is a Primevue Datatable.</h4>
     <DataTable :value="submittedCards" tableStyle="min-width: 50rem">
-      <Column field="username" header="Username"></Column>
-      <Column field="password" header="Password"></Column>
-      <Column field="isAustralian" header="Australian Resident"></Column>
-      <Column field="gender" header="Gender"></Column>
-      <Column field="reason" header="Reason"></Column>
-      <Column field="suburb" header="Suburb"></Column>
+      <Column field="username" header="Username" />
+      <Column field="password" header="Password" />
+      <Column field="isAustralian" header="Australian Resident" />
+      <Column field="gender" header="Gender" />
+      <Column field="reason" header="Reason" />
+      <Column field="suburb" header="Suburb" />
     </DataTable>
   </div>
-
-  <div class="row mt-5" v-if="submittedCards.length">
-    <div class="d-flex flex-wrap justify-content-start">
-      <div
-        v-for="(card, index) in submittedCards"
-        :key="index"
-        class="card m-2"
-        style="width: 18rem"
-      >
-        <div class="card-header">User Information</div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">Username: {{ card.username }}</li>
-          <li class="list-group-item">Password: {{ card.password }}</li>
-          <li class="list-group-item">Australian Resident: {{ card.isAustralian ? 'Yes' : 'No' }}</li>
-          <li class="list-group-item">Gender: {{ card.gender }}</li>
-          <li class="list-group-item">Reason: {{ card.reason }}</li>
-          <li class="list-group-item">Suburb: {{ card.suburb }}</li>
-        </ul>
-      </div>
-    </div>
-  </div>
 </template>
-
-<style scoped>
-.container {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  max-width: 80vw;
-  margin: 0 auto;
-  padding: 20px;
-  border-radius: 10px;
-}
-.form { text-align: center; margin-top: 50px; }
-#username:focus,
-#password:focus,
-#isAustralian:focus,
-.card {
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-.card-header {
-  background-color: #275fda;
-  color: white;
-  padding: 10px;
-  border-radius: 10px 10px 0 0;
-}
-.list-group-item { padding: 10px; }
-</style>
