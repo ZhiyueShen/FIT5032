@@ -8,6 +8,9 @@ import GetBookCountView from '../views/GetBookCountView.vue';
 import WeatherView from "../views/WeatherView.vue";
 import CountBookAPI from "../views/CountBookAPI.vue";
 import GetAllBookAPI from '../views/GetAllBookAPI.vue'
+import { createRouter, createWebHistory } from 'vue-router'
+
+const NotFound = () => import('@/views/NotFound.vue')
 
 const routes = [
   { path: '/', name: 'Home', component: HomeView },
@@ -26,8 +29,10 @@ const routes = [
     path: '/GetAllBookAPI',
     name: 'GetAllBookAPI',
     component: GetAllBookAPI
-  }
+  },
+  { path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFound },
 ]
+
 
 export default createRouter({
   history: createWebHistory(),

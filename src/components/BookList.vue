@@ -24,7 +24,6 @@ export default {
     const books = ref([])
 
     const fetchBooks = async () => {
-      // 8.2 set 2 要求：where + orderBy + limit
       const q = query(
         collection(db, 'books'),
         where('isbn', '>', 1000),
@@ -37,20 +36,16 @@ export default {
       books.value = arr
     }
 
-
     const updateName = async (book) => {
       await updateDoc(doc(db, 'books', book.id), { name: book.name + ' (updated)' })
       await fetchBooks()
     }
 
-
     const remove = async (book) => {
       await deleteDoc(doc(db, 'books', book.id))
       await fetchBooks()
     }
-
     onMounted(fetchBooks)
-
     return { books, updateName, remove }
   }
 }

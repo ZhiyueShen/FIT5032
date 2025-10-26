@@ -3,11 +3,7 @@
     <h1>Book Counter</h1>
 
     <button @click="getBookCount">Get Book Count</button>
-
-    <!-- 如果成功获取数量，显示数量 -->
     <p v-if="count !== null">Total number of books: {{ count }}</p>
-
-    <!-- 如果出错，显示错误 -->
     <p v-if="error">{{ error }}</p>
   </div>
 </template>
